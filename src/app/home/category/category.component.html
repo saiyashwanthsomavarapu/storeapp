@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar style="margin-top: 15px;">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button defaultHref="home/department"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!-- Logout Button -->
+      <ion-button (click)="auth.logoutFunc()">
+        <ion-icon name="power" style="font-size: 20px;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- Title -->
+    <ion-title class="ion-text-center">Price Reminder</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let i of finalarray" (click)="items(i.items)">
+      <ion-label>{{ i.cat_name }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

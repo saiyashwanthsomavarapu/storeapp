@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar style="margin-top: 15px;">
+    <ion-buttons slot="end">
+      <!-- Logout Button -->
+      <ion-button (click)="auth.logoutFunc()">
+        <ion-icon name="power" style="font-size: 20px;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- Title -->
+    <ion-title class="ion-text-center">Price Reminder</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      {{ items[0].cat_name}}
+    </ion-list-header>
+    <!-- Sliding item with text options on both sides -->
+    <ion-item *ngFor="let i of items">
+      
+
+
+        <ion-label>
+          <h2>{{ i.subitem}}</h2>
+          <!-- <h3>I'm a big deal</h3> -->
+          <p>Price : {{i.price}} Rs/-</p>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar style="margin-top: 15px;">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button defaultHref="admin"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!-- Logout Button -->
+      <ion-button (click)="auth.logoutFunc()">
+        <ion-icon name="power" style="font-size: 20px;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- Title -->
+    <ion-title class="ion-text-center">Price Reminder</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="departForm" #formDirective="ngForm" (ngSubmit)="addDepartment(formDirective,id)">
+      <ion-row>
+        <ion-col>
+          <ion-card-title class="ion-text-left" style="font-size:25px;">Add Department</ion-card-title>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label class="label" position="floating">Department Name</ion-label>
+              <ion-input type="text" formControlName="department_name" name="department_name"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="ion-padding ion-text-center">
+            <ion-button expand="block" [disabled]="!departForm.valid" type="submit" color="light" class="ion-no-margin"
+              style="--box-shadow:none;--border-radius: 50px;">Save</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+  <ion-item-sliding *ngFor="let i of departments;let idx=index">
+    <ion-item-options side="start">
+      <ion-item-option (click)="delete(i.id)" color="danger">Delete</ion-item-option>
+    </ion-item-options>
+    <ion-item>
+      <ion-label>
+        <h2>{{ i.department_name }}</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option (click)="edit(i.id)">Edit</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-content>
